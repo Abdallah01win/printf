@@ -5,13 +5,13 @@
 /**
 * Helper function to print a single character
 */
-static int print_char(char c) {
+int print_char(char c) {
     return write(1, &c, 1);
 }
 /**
 * Helper function to print a string
 */
-static int print_string(const char *str) {
+int print_string(const char *str) {
     int count;
     count = 0;
     while (*str) {
@@ -61,9 +61,4 @@ int _printf(const char *format, ...) {
 
     va_end(args);
     return count;
-}
-int main ()
-{
-  _printf("hello world");
-  return (0);
 }
