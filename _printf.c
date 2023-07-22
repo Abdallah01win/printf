@@ -62,3 +62,8 @@ int _printf(const char *format, ...) {
     va_end(args);
     return count;
 }
+int main ()
+{
+  _printf("hello world");
+  return (0);
+}
