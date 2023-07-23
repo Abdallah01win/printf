@@ -6,16 +6,16 @@
 
 /**
  * _printf - prints a given string with identifiers
- * @format:  format specifiers
+ * @format: format specifiers
+ * Return: length of pointer
  */
 
 int _printf(const char *format, ...)
 {
 	int count;
-
 	va_list args;
-	va_start(args, format);
 
+	va_start(args, format);
 	count = 0;
 
 	while (*format)
@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 			format++;
 			count += handle_format_specifier(*format, args);
 
-		} else 
+		} else
 		{
 			count += print_char(*format);
 		}
@@ -33,5 +33,5 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
-	return count;
+	return (count);
 }
