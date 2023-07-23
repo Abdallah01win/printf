@@ -36,7 +36,7 @@ int print_integer(int num)
 {
 	int count = 0;
 	char buffer[20];
-	int i;
+	int i = 0;
 	int length = int_length(num);
 	int index = length - 1;
 
@@ -44,6 +44,7 @@ int print_integer(int num)
 	{
 		count += print_char('-');
 		num = -num;
+		i = i + 1;
 	}
 
 	if (num == 0)
@@ -58,7 +59,7 @@ int print_integer(int num)
 		}
 	}
 
-	for (i = 0; i < length; i++)
+	for (; i < length; i++)
 	{
 		count += print_char(buffer[i]);
 	}
