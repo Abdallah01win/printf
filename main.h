@@ -1,17 +1,18 @@
 #ifndef _MAIN_H
 #define _MAIN_H
-/**
-* Helper function to print a single character
-*/
+
+#include <stdarg.h>
+
+void custom_printf(const char *format, ...);
+void print_integer(int num);
+void print_string(const char *str);
 int print_char(char c);
-/**
-* Helper function to print a string
-*/
-int print_string(const char *str);
-/**
-* The main _printf function
-*/
-int _printf(const char *format, ...);
+int print_digits_integer(int ptr);
+void handle_format_specifier(char format, va_list args);
+
+
+void _printf(const char *format, ...);
+
 /**
  * _putchar - writes the character c to std
  * @c: parameter to compare
