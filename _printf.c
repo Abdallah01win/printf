@@ -24,37 +24,44 @@ int print_string(const char *str) {
     return count;
 }
 
-int print_integer(int num)
-{
-
-    int reverse = 0;
-    int count = 0;
-
-    if (num == 0)
-    {
-       return (1);
-    }
-    
-    if (num < 0)
-    {
-        print_char('-');
+static int int_length(int num) {
+    int length = 0;
+    if (num == 0) {
+        return 1;
+    } else if (num < 0) {
+      length++;
         num = -num;
-        count++;
     }
-
-    while (num > 0)
-    {
-        int digit = num % 10;
-        reverse = reverse * 10 + digit;
+    while (num > 0) {
+        length++;
         num /= 10;
-        count++;
+    }
+    return length;
+}
+
+static int print_integer(int num) {
+    int count = 0;
+    char buffer[20];
+    int i;
+    int length = int_length(num);
+    int index = length - 1;
+
+    if (num < 0) {
+        count += print_char('-');
+        num = -num; 
     }
 
-    while (reverse > 0)
-    {
-        int digit = reverse % 10;
-        print_char('0' + digit);
-        reverse /= 10;
+    if (num == 0) {
+        buffer[index--] = '0';
+    } else {
+        while (num > 0) {
+            buffer[index--] = (num % 10) + '0';
+            num /= 10;
+        }
+    }
+
+    for (i = 0; i < length; i++) {
+        count += print_char(buffer[i]);
     }
 
     return count;
