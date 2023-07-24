@@ -1,68 +1,48 @@
 #include "main.h"
-/**
- * int_length - count length of a given integer
- * @num: a given number
- * Return: length integer
- */
-
-int int_length(int num)
-{
-	int length = 0;
-
-	if (num == 0)
-	{
-		return (1);
-	} else if (num < 0)
-	{
-		length++;
-		num = -num;
-	}
-	while (num > 0)
-	{
-		length++;
-		num /= 10;
-	}
-	return (length);
-}
-
 
 /**
  * print_integer - prints a given number
  * @num: a given number
  * Return: length of integer
  */
-
 int print_integer(int num)
 {
-	int count = 0;
-	char buffer[20];
-	int i = 0;
-	int length = int_length(num);
-	int index = length - 1;
-
-	if (num < 0)
-	{
-		count += print_char('-');
-		num = -num;
-		i = i + 1;
-	}
+	int n, digit;
+	int digitCount = 1, i = 1, lastDigit = num % 10;
 
 	if (num == 0)
 	{
-		buffer[index--] = '0';
-	} else
+		print_char('0');
+		return (1);
+	}
+	n = num / 10;
+	num = n;
+	if (lastDigit < 0)
 	{
-		while (num > 0)
+		print_char('-');
+		num = -num;
+		n = -n;
+		lastDigit = -lastDigit;
+		digitCount++;
+	}
+
+	if (num > 0)
+	{
+		while (num / 10 != 0)
 		{
-			buffer[index--] = (num % 10) + '0';
-			num /= 10;
+			i = i * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (i > 0)
+		{
+			digit = num / i;
+			print_char(digit + '0');
+			num = num - (digit * i);
+			i = i / 10;
+			digitCount++;
 		}
 	}
-
-	for (; i < length; i++)
-	{
-		count += print_char(buffer[i]);
-	}
-
-	return (count);
+	print_char(lastDigit + '0');
+	return (digitCount);
 }
