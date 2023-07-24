@@ -26,7 +26,6 @@ int print_pointer(const void *ptr)
 	for (; pointer_value > 0; pointer_value /= 16, index--)
 	{
 		int rem = pointer_value % 16;
-		char elem;
 
 		if (rem < 10)
 		{
