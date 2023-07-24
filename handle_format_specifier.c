@@ -20,10 +20,9 @@ int handle_format_specifier(char format, va_list args)
 		case 'd':
 		case 'i':
 			return (print_integer(va_arg(args, int)));
-                case 'p': {
-                    	return (print_pointer(va_arg(args, const void *)));
-                }
-	        case '%':
+		case 'p':
+			return (print_pointer(va_arg(args, const void *)));
+		case '%':
 			return (print_char('%'));
 		default:
 			c = print_char('%');
