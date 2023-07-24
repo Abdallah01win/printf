@@ -10,6 +10,18 @@ int print_string(const char *str)
 {
 	int count;
 
+	if (str == NULL)
+	{
+		const char *nullStr = "(null)";
+
+		while (*nullStr != '\0')
+		{
+			count += print_char(*nullStr);
+			nullStr++;
+		}
+		return (count);
+	}
+
 	count = 0;
 	while (*str != '\0')
 	{
