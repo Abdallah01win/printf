@@ -1,25 +1,41 @@
 #include "main.h"
+#include <stdint.h>
 /**
-* Helper function to print a pointer
-*/
-static int print_pointer(const void *ptr) {
-    int count = 0;
-    uintptr_t ptrValue = (uintptr_t)ptr;
+ * print_pointer - prints address of a given pointer
+ * @ptr: a given pointer
+ * Return: length of pointer
+ */
 
-    count += print_char('0');
-    count += print_char('x');
+int print_pointer(const void *ptr)
+{
+	int counter = 0;
+	char elem;
+	uintptr_t pointer_value = (uintptr_t)ptr;
+	char buff[16];
+	int index = 14;
 
-    char buffer[16];
-    int index = 14;
-    buffer[15] = '\0';
-    do {
-        int remainder = ptrValue % 16;
-        buffer[index] = (remainder < 10) ? (remainder + '0') : (remainder - 10 + 'a');
-        ptrValue /= 16;
-        index--;
-    } while (ptrValue > 0);
+	counter += print_char('0');
+	counter += print_char('x');
+	buff[15] = '\0';
 
-    count += print_string(buffer + index + 1);
+	do {
+		int rem = pointer_value % 16;
 
-    return count;
+		if (rem < 10)
+		{
+			elem = rem + '0';
+		}
+		else
+		{
+			elem = rem - 10 + 'a';
+		}
+		buff[index] = elem;
+		pointer_value /= 16;
+		index--;
+	} while (pointer_value > 0);
+
+	counter += print_string(index + 1 + buff);
+
+	return (counter);
 }
+
