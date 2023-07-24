@@ -10,7 +10,6 @@
 int handle_format_specifier(char format, va_list args)
 {
 	int d, c;
-
 	switch (format)
 	{
 		case 'c':
@@ -22,6 +21,8 @@ int handle_format_specifier(char format, va_list args)
 			return (print_integer(va_arg(args, int)));
 		case 'p':
 			return (print_pointer(va_arg(args, const void *)));
+	        case 'r':
+		        return (rev_string(va_arg(args, const char*)));
 		case '%':
 			return (print_char('%'));
 		default:
