@@ -11,7 +11,7 @@ int print_string(const char *str)
 	int count;
 
 	count = 0;
-	while (*str)
+	while (*str != '\0')
 	{
 		count += print_char(*str);
 		str++;
