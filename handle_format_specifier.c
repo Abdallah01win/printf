@@ -20,7 +20,12 @@ int handle_format_specifier(char format, va_list args)
 		case 'd':
 		case 'i':
 			return (print_integer(va_arg(args, int)));
-		case '%':
+                case 'p': {
+                    const void *ptr = va_arg(args, const void *);
+                    count += print_pointer(ptr);
+                    break;
+                }
+	        case '%':
 			return (print_char('%'));
 		default:
 			c = print_char('%');
