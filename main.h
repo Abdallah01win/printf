@@ -13,7 +13,6 @@ int print_string(const char *str);
 int print_char(char c);
 int print_integer(int num);
 int print_pointer(const void *ptr);
-int rev_string(const char *str);
 
 /**
  * _putchar - writes the character c to std
