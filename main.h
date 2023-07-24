@@ -13,6 +13,7 @@ int print_string(const char *str);
 int print_char(char c);
 int print_integer(int num);
 int print_pointer(const void *ptr);
+char *rev_string(va_list list);
 
 /**
  * _putchar - writes the character c to std
