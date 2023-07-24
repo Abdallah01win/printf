@@ -13,6 +13,9 @@ int print_string(const char *str);
 int print_char(char c);
 int print_integer(int num);
 int print_pointer(const void *ptr);
+int print_hexadecimal(unsigned int num, int uppercase);
+int print_unsigned_decimal(unsigned int num);
+int print_octal(unsigned int num);
 
 /**
  * _putchar - writes the character c to std

@@ -24,6 +24,14 @@ int handle_format_specifier(char format, va_list args)
 			return (print_pointer(va_arg(args, const void *)));
 		case '%':
 			return (print_char('%'));
+		case 'x':
+			return (print_hexadecimal(va_arg(args, int), 0));
+		case 'X':
+			return (print_hexadecimal(va_arg(args, int), 1));
+		case 'u':
+			return (print_unsigned_decimal(va_arg(args, int)));
+		case 'o':
+			return (print_octal(va_arg(args, int)));
 		default:
 			c = print_char('%');
 			d = print_char(format);
