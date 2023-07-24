@@ -9,6 +9,8 @@
 
 int handle_format_specifier(char format, va_list args)
 {
+	int d, c;
+
 	switch (format)
 	{
 		case 'c':
@@ -21,8 +23,8 @@ int handle_format_specifier(char format, va_list args)
 		case '%':
 			return (print_char('%'));
 		default:
-			print_char('%');
-			print_char(format);
-			return (2);
+			c = print_char('%');
+			d = print_char(format);
+			return (c + d);
 	}
 }
